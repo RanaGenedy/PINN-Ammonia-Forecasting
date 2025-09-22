@@ -1,0 +1,58 @@
+# config.yaml
+
+# --------------------------------------------------------------------------
+# Simulation constants
+# --------------------------------------------------------------------------
+simulation_constants:
+    dz: 0.01                     # Discretization step size in the z-direction [m]
+    dt: 3600                     # Time step size [s]
+    internal_time_steps: 24      # Number of internal steps for solvers per day
+    z0: 0.001                    # Surface roughness length [m]
+    P: 1                         # Atmospheric pressure [atm]
+    WindH: 1.5                   # Standard height for wind speed measurement [m]
+    CAIR: 0                      # Ammonia concentration in air [kg/m^3]
+    J: 0                         # Initial surface NH3 flux [kg/m^2/s]
+
+# --------------------------------------------------------------------------
+# Herd and manure management constants
+# --------------------------------------------------------------------------
+herd_manure_management:
+    NAU: 3450                    # Number of animal units (dairy cows)
+    MW: 67                       # Manure produced per cow [kg/day]
+    B: 3.78                      # Bedding per cow [kg/day]
+    WW: 0                        # Wash water per cow [kg/day]
+    MD: 993                      # Density of manure [kg/m^3]
+    BD: 128                      # Density of bedding [kg/m^3]
+    WD: 1000                     # Density of water [kg/m^3]
+
+# --------------------------------------------------------------------------
+# Storage dimensions and properties
+# --------------------------------------------------------------------------
+storage_dimensions:
+    Totalheight: 4.8             # Total depth of the storage tank [m]
+    Depth0: 0.3                  # Initial depth of residual manure [m]
+    Freeboard: 0.6               # Freeboard height [m]
+    Soildepth: 4.6               # Soil depth from surface to tank bottom [m]
+    Rain: 0.6                    # Annual rainfall allowance [m]
+    S25y: 0.154                  # 25-year, 24-hour storm rainfall [m]
+    Runoffarea: 4046             # Runoff area [m^2]
+    sdays: 81                    # Number of days manure is stored
+
+# --------------------------------------------------------------------------
+# Thermal and physical properties
+# --------------------------------------------------------------------------
+thermal_properties:
+    Thermalparam: [0.6814, 993, 1992, 1.2] # [conductivity, density, heat_capacity, heat_generation]
+    soilparam:
+        annual_avg_temp: 13      # Average annual soil temperature [C]
+        annual_amp: 28           # Amplitude of annual soil temperature wave [C]
+        thermal_diffusivity: 0.08 # Thermal diffusivity of soil [m^2/day]
+        time_lag_days: 30        # Day of minimum surface temperature
+
+mineralization_properties:
+    Mineralizationparam: [1.2]   # [theta - temperature coefficient]
+
+evaporation_properties:
+    a: 0.14                      # Terrain-dependent parameter
+    h0: 2.0                      # Standard height for wind measurement [m]
+    Ce: 0.00281                  # Bulk aerodynamic transfer coefficient
