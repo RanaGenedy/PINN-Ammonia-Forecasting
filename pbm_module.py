@@ -46,19 +46,19 @@ class PROCESS_BASED_MODEL:
         df_x = pd.DataFrame(x_data, columns=['AAT', 'WS', 'WD', 'SR', 'RH', 'RF', 'Agitation'])
         batch_size = len(df_x)
 
-        # --- Initial Conditions ---
+        # Initial Conditions
         mON_new = init_on
         mTAN_new = 0.78 * mON_new
         Told = 5.0 + 0.75 * df_x["AAT"].iloc[0]
         total_manure_depth = self.storage_dims['Depth0']
 
-        # --- Pre-calculate constant daily inputs and storage area ---
+        # Pre-calculate constant daily inputs and storage area
         daily_manure_in_kg = self.herd_consts['NAU'] * self.herd_consts['MW']
         daily_bedding_in_kg = self.herd_consts['NAU'] * self.herd_consts['B']
         daily_water_in_kg = self.herd_consts['WW']
         storage_area = self.calculate_storage_area(self.storage_dims, self.herd_consts)
 
-        # --- Simulation Loop ---
+        # Simulation Loop
         nh3_flux_results = np.zeros((batch_size, 1))
         manure_removal_amts = self._manure_removal_events(df_x)
 

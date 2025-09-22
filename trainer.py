@@ -72,7 +72,7 @@ def train_model(model, pbm_simulator, pbm_params, train_loader,
             X_batch_last_step = X_batch_seq[:, -1, :].cpu().numpy()
             y_pbm_raw = pbm_simulator.run_simulation(X_batch_last_step, **pbm_params)
             
-            # Scale the PBM output before calculating loss ***
+            # Scale the PBM output before calculating loss
             y_pbm_scaled = torch.tensor(y_scaler.transform(y_pbm_raw), dtype=torch.float32).to(device)
 
 
@@ -98,7 +98,7 @@ def train_model(model, pbm_simulator, pbm_params, train_loader,
                 X_batch_last_step = X_batch_seq[:, -1, :].cpu().numpy()
                 y_pbm_raw = pbm_simulator.run_simulation(X_batch_last_step, **pbm_params)
                 
-                # Scale the PBM output for validation loss as well ***
+                # Scale the PBM output for validation loss
                 y_pbm_scaled = torch.tensor(y_scaler.transform(y_pbm_raw), dtype=torch.float32).to(device)
                 
                 
